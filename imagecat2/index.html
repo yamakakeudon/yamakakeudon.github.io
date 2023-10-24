@@ -1,0 +1,94 @@
+<html>
+<head>
+  <title>three.js + ar.js</title>
+  <meta name="viewport" content="width=device-width, viewport-fit=cover, shrink-to-fit=no" />
+  <style>
+    * {
+      margin: 0; padding: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <canvas></canvas>
+  </div>
+  <script src="https://unpkg.com/three@0.127.0/build/three.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/3.3.3/three.js/build/ar-nft.js"></script><!--❶ イメージトラッキング用のスクリプトに変更-->
+  <script>
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.querySelector('canvas'),
+      antialias: true,
+      alpha: true
+    });
+    const camera = new THREE.PerspectiveCamera();
+    const scene = new THREE.Scene();
+    const markerRoot = new THREE.Group();
+    const arToolkitContext = new THREEx.ArToolkitContext({
+      detectionMode: 'mono'
+    });
+    const arToolkitSource = new THREEx.ArToolkitSource({
+      sourceType: 'webcam'
+    });
+    const arMarkerControls = new THREEx.ArMarkerControls(arToolkitContext, camera, {
+      type: 'nft', // 'nft'に変更
+      descriptorsUrl : 'nft/testcat', // ❷ https://carnaux.github.io/NFT-Marker-Creator/ で作成
+      changeMatrixMode: 'cameraTransformMatrix'
+    });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    scene.add(camera); // ❸ カメラをシーンに追加
+    
+    window.addEventListener('resize', handleResize, {
+      passive: true
+    });
+
+    window.addEventListener('arjs-nft-loaded', (evt) =>{
+      console.log(evt);
+    });
+
+    arToolkitContext.init(() => {
+      camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
+    });
+
+    arToolkitSource.init(() => {
+      document.querySelector('.wrapper').appendChild(arToolkitSource.domElement);
+      setTimeout(() => handleResize(), 400);
+    });
+
+    scene.visible = false;
+    scene.add(markerRoot);
+
+    const cube = new THREE.Mesh(
+      new THREE.BoxGeometry(100, 100, 100), // ❹ 大きめに設定
+      new THREE.MeshNormalMaterial()
+    );
+
+    cube.position.set(0, 0, 0); // ❹ 一旦、原点に表示
+
+    markerRoot.add(cube);
+
+    renderer.setAnimationLoop((delta) => {
+      if (arToolkitSource.ready) {
+        arToolkitContext.update(arToolkitSource.domElement);
+      }
+
+      scene.visible = camera.visible; // ❺ 自力で表示・非表示を切り替える
+      renderer.render(scene, camera);
+    });
+
+    function handleResize() {
+      if (arToolkitSource.ready) {
+        arToolkitSource.onResize();
+        arToolkitSource.copySizeTo(renderer.domElement);
+      }
+
+      renderer.setPixelRatio(window.devicePixelRatio);
+    }
+  </script>
+</body>
+</html>
