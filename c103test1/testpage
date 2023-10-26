@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+      <video id="video" muted webkit-playsinline playsinline src="https://yamakakeudon.github.io/c103test1/testmovie.mp4" loop="true"></video>
+      </a-assets>
+        <a-video src="#video" position "0 0 0" rotaion="-0 0 0" width="1" height="1"></a-video>
+    </a-scene>
+    <script>
+      window.addEventListener(“click”, ()=>{
+        const video = document.getElementById(“video”)
+
+        video.play()
+    })
+    </script>
+  </body>
+</html>
