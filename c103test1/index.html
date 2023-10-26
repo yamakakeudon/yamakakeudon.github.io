@@ -14,13 +14,49 @@
       <a-entity mindar-image-target="targetIndex: 0">
         <a-video src="#video" position "0 0 0" rotaion="-90 0 0" width="1" height="1"></a-video>
       </a-entity>
+      <a-entity
+    id="playButton"
+    geometry="primitive: plane; height: 1; width: 1"
+    material="src: #play"
+    position="-7.3 -1.2 0.6"
+    rotation="0 90 0"
+    ></a-entity>
+
+    <a-entity
+    id="stopButton"
+    click-stop
+    geometry="primitive: plane; height: 1; width: 1"
+    material="src: #stop"
+    position="-7.3 -1.2 -0.67"
+    rotation="0 90 0"
+    ></a-entity>
     </a-scene>
     <script>
-      window.addEventListener(“click”, ()=>{
-        const video = document.getElementById(“video”)
+document.addEventListener("DOMContentLoaded", function(event) {
+      var scene = document.querySelector("a-scene");
+      var video = document.getElementById("video");
 
-        video.play()
+      if (scene.hasLoaded) {
+        run();
+      } else {
+        scene.addEventListener("loaded", run);
+      }
+
+      function run () {
+        scene.querySelector("#playButton").addEventListener("click", function(e){
+              video.play();
+          });
+      }
+
     })
+
+    AFRAME.registerComponent('click-stop', {
+    init: function () {
+      this.el.addEventListener('click', function (event) {
+        document.getElementById("video").pause();
+      });
+    }
+  });
     </script>
   </body>
 </html>
