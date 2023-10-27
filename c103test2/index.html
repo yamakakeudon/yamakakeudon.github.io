@@ -155,7 +155,12 @@
   </head>
   <body>
     <div class="example-container">
-
+   <div class="example-container">
+      <div id="example-scanning-overlay" class="hidden">
+	<div class="inner">
+	  <div class="scanline"></div>
+	</div>
+      </div>
       <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/card.mind; showStats: false; uiScanning: #example-scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         <a-assets>
           <img id="card" src="https://yamakakeudon.github.io/c103test2/assets/card.png" />
