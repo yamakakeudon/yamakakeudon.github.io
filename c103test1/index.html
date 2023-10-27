@@ -13,16 +13,11 @@
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       <a-entity mindar-image-target="targetIndex: 0">
            <a-video
+             video-object
+             click={() => video.play()}
              class="clickable"
              src="#video" position "0 0 0" rotaion="-0 0 0" width="1" height="1"></a-video>
       </a-entity>
     </a-scene>
-        <script>
-      window.addEventListener(“click”, ()=>{
-        const video = document.getElementById(“video”)
-
-        video.play()
-    })
-    </script>
   </body>
 </html>
