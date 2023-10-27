@@ -4,20 +4,36 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-image-aframe.prod.js"></script>
+
+    <script>
+      preview.addEventListener('click', ()=>{
+      previewk.setAttribute("visible",false);
+       const video = document.createElement(“video”);
+       const canplayWebm = video.canPlayType( 'video/webm; codecs="vp8, vorbis"' );
+              if (canplayWebm == "") {
+                document.querySelector("#videolink").setAttribute("src", "#video");
+                document.querySelector("#video").play();
+              } 
+            });
+    </script>
   </head>
   <body>
     <a-scene mindar-image="imageTargetSrc: https://yamakakeudon.github.io/c103test1/targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false"> 
       <a-assets>
-   <video id="video"  src="https://yamakakeudon.github.io/c103test1/testmovie.mp4" loop="true" autoplay="false"></video>
+      <video id="video"  src="https://yamakakeudon.github.io/c103test1/testmovie.mp4" loop="true" autoplay="false"></video>
+      <img id="preview" src="https://yamakakeudon.github.io/c103test1/testimage.png"/>
+      <img id="playbutton" src="https://yamakakeudon.github.io/c103test1/playbutton.png"/>
       </a-assets>
         <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable">
         </a-camera>
       <a-entity mindar-image-target="targetIndex: 0" cursor="rayOrigin: mouse">
-           <a-video
+           <a-video id="videolink"
              muted webkit-playsinline playsinline
              src="#video" position "0 0 0" rotaion="-0 0 0" width="1" height="1"
              onMouseUp={() => console.log("clicked")}
            </a-video>
+           <a-image id="preview" clack="clickable" src="#preview" position"0 0 0" heght="1" width"1#>
+             </a-image>a-image>
       </a-entity>
     </a-scene>
   </body>
