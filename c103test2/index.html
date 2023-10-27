@@ -60,24 +60,10 @@
         }, 10);
       }
 
-      const showAvatar = (onDone) => {
-        const avatar = document.querySelector("#avatar");
-        let z = -0.3;
-        const id = setInterval(() => {
-          z += 0.008;
-          if (z >= 0.3) {
-            clearInterval(id);
-            onDone();
-          }
-          avatar.setAttribute("position", "0 -0.25 " + z);
-        }, 10);
-      }
-
       AFRAME.registerComponent('mytarget', {
         init: function () {
           this.el.addEventListener('targetFound', event => {
             console.log("target found");
-            showAvatar(() => {
               setTimeout(() => {
                 showPortfolio(() => {
                   setTimeout(() => {
@@ -86,7 +72,6 @@
                 });
               }, 300);
             });
-          });
           this.el.addEventListener('targetLost', event => {
             console.log("target found");
           });
@@ -185,8 +170,6 @@
           <video id="paintandquest-video-webm" autoplay="false" loop="true" src="https://yamakakeudon.github.io/c103test2/assets/paintandquest.webm"></video>
           <img id="coffeemachine-preview" src="https://yamakakeudon.github.io/c103test2/assets/coffeemachine-preview.png" />
           <img id="peak-preview" src="https://yamakakeudon.github.io/c103test2/assets/peak-preview.png" />
-          
-          <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable">
@@ -214,10 +197,6 @@
             <a-image visible=false id="portfolio-left-button" class="clickable" src="#icon-left" position="-0.7 0 0" height="0.15" width="0.15"></a-image>
             <a-image visible=false id="portfolio-right-button" class="clickable" src="#icon-right" position="0.7 0 0" height="0.15" width="0.15"></a-image>
           </a-entity>
-
-          <a-gltf-model id="avatar" rotation="0 0 0" position="0 -0.25 0" scale="0.004 0.004 0.004" src="#avatarModel"></a-gltf-model>
-
-          <a-text id="text" class="clickable" value="" color="black" align="center" width="2" position="0 -1 0" geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
         </a-entity>
       </a-scene>
     </div>
