@@ -161,7 +161,6 @@
       </div>
       <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/card.mind; showStats: false; uiScanning: #example-scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         <a-assets>
-          <img id="card" src="https://yamakakeudon.github.io/c103test2/assets/card.png" />
           <img id="icon-play" src="https://yamakakeudon.github.io/c103test2/assets/play.png" />
           <img id="icon-left" src="https://yamakakeudon.github.io/c103test2/assets/left.png" />
           <img id="icon-right" src="https://yamakakeudon.github.io/c103test2/assets/right.png" />
@@ -176,8 +175,6 @@
         </a-camera>
 
         <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
-          <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
-
           <a-entity visible=false id="portfolio-panel" position="0 0 -0.01">
             <a-text value="Portfolio" color="black" align="center" width="2" position="0 0.4 0"></a-text>
             <a-entity id="portfolio-item0">
