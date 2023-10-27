@@ -8,15 +8,15 @@
   <body>
     <a-scene mindar-image="imageTargetSrc: https://yamakakeudon.github.io/c103test1/targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false"> 
       <a-assets>
-   <video id="video" muted webkit-playsinline playsinline src="https://yamakakeudon.github.io/c103test1/testmovie.mp4" loop="true"></video>
+   <video id="video"  src="https://yamakakeudon.github.io/c103test1/testmovie.mp4" loop="true" autoplay="false"></video>
       </a-assets>
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable">
+        </a-camera>
       <a-entity mindar-image-target="targetIndex: 0" cursor="rayOrigin: mouse">
            <a-video
-             video-object
-             class="clickable"
+             muted webkit-playsinline playsinline
              src="#video" position "0 0 0" rotaion="-0 0 0" width="1" height="1"
-             onMouseUp={() => console.log("clicked")}>
+             onMouseUp={() => console.log("clicked")}
            </a-video>
       </a-entity>
     </a-scene>
