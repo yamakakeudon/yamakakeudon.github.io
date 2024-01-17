@@ -24,7 +24,7 @@
             paintandquestPreviewButton.addEventListener('click', () => {
               paintandquestPreviewButton.setAttribute("visible", false);
               const testVideo = document.createElement( "video" );
-              const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, vorbis"' );
+              const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp9, vorbis"' );
               if (canplayWebm == "") {
                 document.querySelector("#paintandquest-video-link").setAttribute("src", "#paintandquest-video-mp4");
                 document.querySelector("#paintandquest-video-mp4").play();
@@ -141,11 +141,11 @@
 	  <div class="scanline"></div>
 	</div>
       </div>
-      <a-scene mindar-image="imageTargetSrc: https://yamakakeudon.github.io/fctest/assets/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-scene mindar-image="imageTargetSrc: https://yamakakeudon.github.io/sheelAR/assets/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         <a-assets>
-          <img id="paintandquest-preview" src="https://yamakakeudon.github.io/fctest/assets/preview.PNG" />
-          <video id="paintandquest-video-mp4" autoplay="false" loop="true" src="https://yamakakeudon.github.io/fctest/assets/video.mp4"></video>
-          <video id="paintandquest-video-webm" autoplay="false" loop="true" src="https://yamakakeudon.github.io/fctest/assets/video.webm"></video>
+          <img id="paintandquest-preview" src="https://yamakakeudon.github.io/sheelAR/assets/preview.png" />
+          <video id="paintandquest-video-mp4" autoplay="false" loop="true" src="https://yamakakeudon.github.io/sheelAR/assets/sheelAR.mp4"></video>
+          <video id="paintandquest-video-webm" autoplay="false" loop="true" src="https://yamakakeudon.github.io/sheelAR/assets/sheelAR.webm"></video>
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable">
@@ -154,8 +154,8 @@
         <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
           <a-entity visible=false id="portfolio-panel" position="0 0 -0.01">
             <a-entity id="portfolio-item0">
-              <a-video id="paintandquest-video-link" webkit-playsinline playsinline width="1" height="1.4" position="0 0 0"></a-video>
-              <a-image id="paintandquest-preview-button" class="clickable" src="#paintandquest-preview" alpha-test="0" position="0 0 0" height="1.4" width="1">
+              <a-video id="paintandquest-video-link" webkit-playsinline playsinline width="1" height="0.56" position="0 0 0"></a-video>
+              <a-image id="paintandquest-preview-button" class="clickable" src="#paintandquest-preview" alpha-test="0" position="0 0 0" height="0.56" width="1">
               </a-image>
             </a-entity>
           </a-entity>
