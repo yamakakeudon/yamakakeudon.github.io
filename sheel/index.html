@@ -24,7 +24,7 @@
             paintandquestPreviewButton.addEventListener('click', () => {
               paintandquestPreviewButton.setAttribute("visible", false);
               const testVideo = document.createElement( "video" );
-              const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, vorbis"' );
+              const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp9, vorbis"' );
               if (canplayWebm == "") {
                 document.querySelector("#paintandquest-video-link").setAttribute("src", "#paintandquest-video-mp4");
                 document.querySelector("#paintandquest-video-mp4").play();
