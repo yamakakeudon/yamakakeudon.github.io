@@ -22,7 +22,7 @@
             clearInterval(id);
 
             videoPreviewButton.addEventListener('click', () => {
-              paintandquestPreviewButton.setAttribute("visible", false);
+              videoPreviewButton.setAttribute("visible", false);
               const testVideo = document.createElement( "video" );
               const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp9, vorbis"' );
               if (canplayWebm == "") {
