@@ -9,7 +9,7 @@
 
       const showPortfolio = (done) => {
         const portfolio = document.querySelector("#portfolio-panel");
-        const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
+        const videoPreviewButton = document.querySelector("#video-preview-button");
 
         let y = 0;
         let currentItem = 0;
@@ -143,7 +143,7 @@
       </div>
       <a-scene mindar-image="imageTargetSrc: https://yamakakeudon.github.io/sheelAR/assets/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         <a-assets>
-          <img id="paintandquest-preview" src="https://yamakakeudon.github.io/sheelAR/assets/preview.png" />
+          <img id="video-preview" src="https://yamakakeudon.github.io/sheelAR/assets/preview.png" />
           <video id="paintandquest-video-mp4" autoplay="false" loop="true" src="https://yamakakeudon.github.io/sheelAR/assets/sheelAR.mp4"></video>
           <video id="paintandquest-video-webm" autoplay="false" loop="true" src="https://yamakakeudon.github.io/sheelAR/assets/sheelAR.webm"></video>
         </a-assets>
@@ -155,7 +155,7 @@
           <a-entity visible=false id="portfolio-panel" position="0 0 -0.01">
             <a-entity id="portfolio-item0">
               <a-video id="paintandquest-video-link" webkit-playsinline playsinline width="1" height="0.56" position="0 0 0"></a-video>
-              <a-image id="paintandquest-preview-button" class="clickable" src="#paintandquest-preview" alpha-test="0" position="0 0 0" height="0.56" width="1">
+              <a-image id="video-preview-button" class="clickable" src="#video-preview" alpha-test="0" position="0 0 0" height="0.56" width="1">
               </a-image>
             </a-entity>
           </a-entity>
